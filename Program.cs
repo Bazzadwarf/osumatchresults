@@ -82,7 +82,9 @@ namespace osumatchresults
                             newScore.mods = newScore.mods + flagToCheck.ToString();
                         }
                     }
-                    
+
+                    newScore.acc = ((int.Parse(score["count300"].ToString()) * 300.0f) + (int.Parse(score["count100"].ToString()) * 100.0f) + (int.Parse(score["count50"].ToString()) * 50.0f)) / ((int.Parse(score["count300"].ToString()) + int.Parse(score["count100"].ToString()) + int.Parse(score["count50"].ToString()) + int.Parse(score["countmiss"].ToString())) * 300.0f);
+
                     newGame.scores.Add(newScore);                    
                 }
 
@@ -97,7 +99,7 @@ namespace osumatchresults
 
                 foreach (var score in game.scores)
                 {
-                    await file.WriteLineAsync(score.user + "," + score.score + "," + score.mods);
+                    await file.WriteLineAsync(score.user + "," + score.score + "," + score.mods + "," + score.acc);
                 }
             }
 
@@ -117,7 +119,8 @@ namespace osumatchresults
         public int userid;
         public string user;
         public int score;
-        public string mods; 
+        public string mods;
+        public float acc;
     }
 
     [Flags]
