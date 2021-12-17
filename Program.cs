@@ -99,7 +99,7 @@ namespace osumatchresults
 
                 foreach (var score in game.scores)
                 {
-                    await file.WriteLineAsync(score.user + "," + score.score + "," + score.mods + "," + score.acc);
+                    await file.WriteLineAsync(score.user + "," + score.score + "," + score.acc + "," + score.mods);
                 }
             }
 
