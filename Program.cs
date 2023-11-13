@@ -28,7 +28,11 @@ namespace osumatchresults
 
             var input = Console.ReadLine();
             var inputs = input.Split(" ");
-            foreach(var varname in inputs)
+
+            Console.Write("RUN: ");
+            var run = Console.ReadLine();
+            
+            foreach (var varname in inputs)
             {
                 bool success = int.TryParse(varname, out matchid);
                 if (!success)
@@ -126,7 +130,7 @@ namespace osumatchresults
 
                     foreach (var score in game.scores)
                     {
-                        await file.WriteLineAsync(game.beatmapsetid + "," + score.user + "," + score.score + "," + score.acc + "," + "1st" + "," + score.mods + "," + score.count300 + "," + score.count100 + "," + score.count50 + "," + score.countmiss);
+                        await file.WriteLineAsync(game.beatmapsetid + "," + score.user + "," + score.score + "," + score.acc + "," + run + "," + score.mods + "," + score.count300 + "," + score.count100 + "," + score.count50 + "," + score.countmiss);
                     }
                 }
 
